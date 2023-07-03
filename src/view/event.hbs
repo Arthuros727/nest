@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Liste des événements</title>
+  </head>
+  <body>
+    <h1>Liste des événements</h1>
+    <style>
+      .event {
+        background-color: #f2f2f2;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      .event p {
+        margin: 5px 0;
+      }
+    </style>
+    <ul>
+      {{#each events}}
+      <div class="event">
+
+      <p>name : {{this.name}}</p>
+      <p>date : {{this.date}}</p>
+      <p>location : {{this.location}}</p>
+      <p>description : {{this.description}}</p>
+      <p>tickets available : {{this.tickets_available}}</p>
+
+      <form action="http://localhost:7272/events/getTickets" method="post">
+
+<button name="eventId" value="{{this.id}}" type="submit">Get Tickets</button>
+      </form>
+      </div>
+
+      {{/each}}
+    </ul>
+  </body>
+</html>
+
